@@ -1,0 +1,50 @@
+>>> diff = 15
+>>> 
+>>> diff
+15
+>>> load = diff * 2
+>>> load
+30
+>>> a =4
+>>> a
+4
+>>> type(a)
+<class 'int'>
+>>> b = 1.7
+>>> b
+1.7
+>>> type(b)
+<class 'float'>
+>>> name = input("Enter name : ")
+Enter name : Sasha
+>>> name
+'Sasha'
+>>> type(name)
+<class 'str'>
+>>> old = int(input("how old are you? "))
+how old are you? 17
+>>> old
+17
+>>> type(old)
+<class 'int'>
+>>> 2**8
+256
+>>> pow(2,8)
+256
+>>> pow(3,3)
+27
+>>> abs(-9)
+9
+>>> type(float(input('old ')))
+old 47
+<class 'float'>
+>>> float(7)
+7.0
+>>> type(True)
+<class 'bool'>
+>>> 
+>>> 5+True
+6
+>>> 6+False
+6
+>>> 
