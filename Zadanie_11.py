@@ -11,6 +11,6 @@ secondPeople =(people * secondPeopleProcent)/100
 secondCost = secondPeople*(day*15)
 lastPeople =(people * lastPeopleProcent)/100
 lastCost = lastPeople*(day*20)
-allSummNalog = (firstCost+secondCost+lastCost)/13
+allSummNalog = int((firstCost+secondCost+lastCost)/13)
 print('Налог составит ',allSummNalog,' руб')
 input('Press Enter to continue ...')
