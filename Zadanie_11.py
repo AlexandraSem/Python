@@ -12,6 +12,5 @@ secondCost = secondPeople*(day*15)
 lastPeople =(people * lastPeopleProcent)/100
 lastCost = lastPeople*(day*20)
 allSummNalog = (firstCost+secondCost+lastCost)/13
-value = firstCost+secondCost+lastCost-allSummNalog
-print('Выручка составляет ',value,' руб')
+print('Налог составит ',allSummNalog,' руб')
 input('Press Enter to continue ...')
