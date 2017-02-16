@@ -1,6 +1,12 @@
-#Вычислить среднее арифметическое двух чисел.
-firstNumber = int(input('Enter the 1st number : '))
-secondNumber = int(input('Enter the 2nd number : '))
-sredneeArifmeticheskoe = int((firstNumber * secondNumber)/2)
-print(sredneeArifmeticheskoe)
-print('Press Enter to continue ...')
+#1.Посчитать четные и нечетные цифры числа
+number = 0
+countCh = 0
+countNch = 0
+while number < 10:
+    number += 1
+    if number % 2 == 0:
+        countCh +=1
+    else :
+        countNch +=1
+print("Четных чисел всего: ",countCh,"Нечетных чисел всего: ",countNch)
+input("Press Enter to continue")
