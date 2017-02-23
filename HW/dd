@@ -1,0 +1,95 @@
+import random
+
+print('Добро пожаловать в игру "кости".Правила просты.')
+user = int(input("Режим игры:\n1-один игрок\n2-игра с другом\n3-сам с собой\n\nВаш ответ: "))
+
+if user == 1:
+    bubjet = int(input("Ваш бюджет составляет: "))
+    while True:
+        stavka = int(input("Ваша ставка: "))
+        if stavka > 50:
+            print("Зачем так много?")
+            continue
+        kostiUser = int(input("На какое число ставка: "))
+        compKosti = random.randint(1, 12)
+        a = random.randint(1, 6)
+        b = random.randint(1, 6)
+        c = a + b
+
+        print("Компьютер поставил на ",compKosti)
+        print("Первая кость:",a)
+        print("Вторая кость:",b)
+        print("Сумма:",c)
+
+        if kostiUser != c and compKosti == c:
+            print("ИИ победил")
+            break
+        elif compKosti != c and kostiUser == c:
+            print("Победа за вами")
+            break
+        elif kostiUser == c and compKosti == c:
+            print("Ничья")
+            break
+        else:
+            print("Бывает")
+            bubjet= bubjet - stavka
+            if bubjet<=0:
+                print('Конец игры.Вы на нули')
+                break
+            print(bubjet)
+            continue
+
+elif user == 2:
+    while True:
+        stavkaPlayer1 = input("Игрок 1 ваша ставка : ")
+        stavkaPlayer2 = input("Игрок 2 ваша ставка : ")
+        if stavkaPlayer1 >= 50 or stavkaPlayer2 >= 50:
+            print("Зачем так много?")
+            continue
+        kostiPlayer1 = int(input("Игрок 1: На какое число: "))
+        kostiPlayer2 = int(input("Игрок 2: На какое число ставка: "))
+        a = random.randint(1, 6)
+        b = random.randint(1, 6)
+        c = a + b
+
+        print("Игрок 1 поставил на ", kostiPlayer1)
+        print("Игрок 2 поставил на ", kostiPlayer2)
+        print("Первая кость: ", a)
+        print("Вторая кость: ", b)
+        print("Сумма:", c)
+        if kostiPlayer1 == c and kostiPlayer2 != c:
+            print("Игрок 1 победил")
+            break
+        elif kostiPlayer1 != c and kostiPlayer2 == c:
+            print("Игрок 2 победил")
+            break
+        elif kostiPlayer1 == c and kostiPlayer2 == c:
+            print("Ничья")
+            break
+        else:
+            print("Бывает")
+            continue
+
+elif user == 3:
+    while True:
+        stavka = input("Ваша ставка: ")
+        if stavkaPlayer1 > 50 or stavkaPlayer2 > 50:
+            print("Зачем так много?")
+            input("Press Enter to continue ")
+            continue
+            kostiUser = input("На какое число ставка: ")
+            a = random.randint(1, 6)
+            b = random.randint(1, 6)
+            c = a + b
+            print("Первая кость:",a)
+            print("Вторая кость:",b)
+            print("Сумма:",c)
+
+            if kostiUser == c:
+                print("Победа")
+                break
+            else:
+                print("Бывает")
+                continue
+else:
+    print("Ошибка.Неверное значение")
