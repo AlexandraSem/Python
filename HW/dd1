@@ -1,0 +1,77 @@
+import tkinter
+import random
+from tkinter import *
+from tkinter.messagebox import *
+
+def button_clicked1():
+    tx = Text(font=('times', 12), width=50, height=15, wrap=WORD)
+    tx.pack(expand=YES, fill=BOTH)
+    root.geometry('500x400+300+200')
+    tx.insert(1.0, 'Добро пожаловать в игру "кости".Правила просты.\n\n')
+    bones = Button(root, bg="green", width=20, height=2, text=u"Кинуть кости", command=bones_click)
+    bones.pack()
+    bones.place(x=180, y=55)
+
+
+def button_clicked2():
+    window2 = Tk(u"Кинуть кости")
+    window2.minsize(width=400, height=400)
+
+def bones_click():
+    kostiUser = random.randint(1, 12)
+    compKosti = random.randint(1, 12)
+    a = random.randint(1, 6)
+    b = random.randint(1, 6)
+    c = a + b
+    print('Вы поставили на ',kostiUser)
+    print("Компьютер поставил на ", compKosti)
+    print('Выпало', c)
+   # print("Первая кость:", a)
+    #print("Вторая кость:", b)
+    #print("Сумма:", c)
+
+    if kostiUser != c and compKosti == c:
+        print("ИИ победил")
+        exit()
+    elif compKosti != c and kostiUser == c:
+        print("Победа за вами")
+        exit
+    elif kostiUser == c and compKosti == c:
+        print("Ничья")
+        exit
+    else:
+        print("Бывает")
+
+
+#Создание рабочей среды
+root=Tk()
+
+#Меню
+m = Menu(root)
+root.config(menu=m)
+fm = Menu(m)
+m.add_cascade(label="Меню",menu=fm)
+def new_win():
+    if askyesno("Новая игра", "Играть в новом окне?"):
+        win = Toplevel(root)
+
+def close_win():
+    if askyesno("Выход", "Ты хочешь выйти?"):
+        root.destroy()
+fm.add_command(label="Новая игра", command=new_win)
+fm.add_command(label="Выход", command=close_win)
+
+
+tx = Text(font=('times', 12), width=50, height=15, wrap=WORD)
+tx.pack(expand=YES, fill=BOTH)
+tx.insert(1.0, 'Добро пожаловать в игру "кости".Правила просты.\n\n')
+
+root.geometry('500x400+300+200')
+button2 = Button(root, bg="green",width=20,height=2, text=u"Игра с другом", command=button_clicked2)
+button1 = Button(root, bg="green",width=20,height=2, text=u"Игра с компьютером", command=button_clicked1)
+button1.pack()
+button2.pack()
+button2.place(x=280,y=80)
+button1.place(x=30,y=80)
+root.mainloop()
+
