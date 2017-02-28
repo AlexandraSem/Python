@@ -4,12 +4,14 @@ print('Добро пожаловать в игру "кости".Правила �
 user = int(input("Режим игры:\n1-один игрок\n2-игра с другом\n3-сам с собой\n\nВаш ответ: "))
 
 if user == 1:
-    bubjet = int(input("Ваш бюджет составляет: "))
+    budjet = int(input("Ваш бюджет составляет: "))
     while True:
         stavka = int(input("Ваша ставка: "))
         if stavka > 50:
             print("Зачем так много?")
             continue
+        
+        budjet = budjet-stavka
         kostiUser = int(input("На какое число ставка: "))
         compKosti = random.randint(1, 12)
         a = random.randint(1, 6)
@@ -23,29 +25,46 @@ if user == 1:
 
         if kostiUser != c and compKosti == c:
             print("ИИ победил")
+            print("Поощрительный приз",stavka/3)
+            budjet =budjet+(stavka/3)
+            print("Ваш бюджет составляет", budjet)
             break
         elif compKosti != c and kostiUser == c:
             print("Победа за вами")
+            print("Ваш выигрыш ", stavka*2)
+            budjet = bubjet +(stavka*2)
+            print("Ваш бюджет составляет", budjet)
             break
         elif kostiUser == c and compKosti == c:
             print("Ничья")
-            break
-        else:
-            print("Бывает")
-            bubjet= bubjet - stavka
-            if bubjet<=0:
+            if budjet = 0:
                 print('Конец игры.Вы на нули')
                 break
-            print(bubjet)
+            elif budjet < 0:
+                print('Конец игры.Ваш долг составляет',budjet*-1)
+                break
+            continue
+        else:
+        print("Ничего.С каждым бывает")
+            if budjet = 0:
+                print('Конец игры.Вы на нули')
+                break
+            elif budjet < 0:
+                print('Конец игры.Ваш долг составляет',budjet*-1)
+                break
             continue
 
 elif user == 2:
+    budjetUser1 = int(input("Игрок1, ваш бюджет составляет: "))
+    budjetUser2 = int(input("Игрок2, ваш бюджет составляет: "))
     while True:
         stavkaPlayer1 = input("Игрок 1 ваша ставка : ")
         stavkaPlayer2 = input("Игрок 2 ваша ставка : ")
         if stavkaPlayer1 >= 50 or stavkaPlayer2 >= 50:
             print("Зачем так много?")
             continue
+        budjetUser1 = budjetUser1-stavkaPlayer1
+        budjetUser2 = budjetUser2-stavkaPlayer2
         kostiPlayer1 = int(input("Игрок 1: На какое число: "))
         kostiPlayer2 = int(input("Игрок 2: На какое число ставка: "))
         a = random.randint(1, 6)
@@ -59,23 +78,39 @@ elif user == 2:
         print("Сумма:", c)
         if kostiPlayer1 == c and kostiPlayer2 != c:
             print("Игрок 1 победил")
+            print("Ваш выигрыш ", stavkaPlayer1*2)
+            budjetUser1 = budjetUser1 +(stavkaPlayer1*2)
+            print("Игрок1, ваш бюджет составляет: ",budjetUser1)
+            print("Игрок2, ваш поощрительный приз",stavkaPlayer2/3)
+            budjetUser2 =budjetUser2+(stavkaPlayer2/3)
+            print("Ваш бюджет составляет", budjetUser2)
             break
         elif kostiPlayer1 != c and kostiPlayer2 == c:
             print("Игрок 2 победил")
+            print("Ваш выигрыш ", stavkaPlayer2*2)
+            budjetUser2 = budjetUser2 +(stavkaPlayer2*2)
+            print("Игрок2, ваш бюджет составляет: ",budjetUser2)
+            print("Игрок1, ваш поощрительный приз",stavkaPlayer1/3)
+            budjetUser1 =budjetUser1+(stavkaPlayer1/3)
+            print("Ваш бюджет составляет", budjetUser1)
             break
         elif kostiPlayer1 == c and kostiPlayer2 == c:
             print("Ничья")
-            break
+            print("Игрок1, ваш бюджет составляет: ", budjetUser1)
+            print("Игрок2, ваш бюджет составляет: ", budjetUser2)
+            continue
         else:
-            print("Бывает")
+            print("Все проиграли")
+            print("Игрок1, ваш бюджет составляет: ", budjetUser1)
+            print("Игрок2, ваш бюджет составляет: ", budjetUser2)
             continue
 
 elif user == 3:
+budjet = int(input("Ваш бюджет составляет: "))
     while True:
         stavka = input("Ваша ставка: ")
-        if stavkaPlayer1 > 50 or stavkaPlayer2 > 50:
+        if stavkaUser > 50:
             print("Зачем так много?")
-            input("Press Enter to continue ")
             continue
             kostiUser = input("На какое число ставка: ")
             a = random.randint(1, 6)
@@ -87,9 +122,21 @@ elif user == 3:
 
             if kostiUser == c:
                 print("Победа")
+                print("Ваш выигрыш ", stavkaUser*2)
+                budjet = bubjet +(stavka*2)
+                print("Ваш бюджет составляет", budjet)
                 break
             else:
-                print("Бывает")
+                print("Вы проиграли")
+                print("Поощрительный приз",stavka/3)
+                budjet = budjet+(stavka/3)
+                print("Ваш бюджет составляет", budjet)
+                if budjet = 0:
+                    print('Конец игры.Вы на нули')
+                    break
+                elif budjet < 0:
+                    print('Конец игры.Ваш долг составляет',budjet*-1)
+                    break
                 continue
 else:
     print("Ошибка.Неверное значение")
