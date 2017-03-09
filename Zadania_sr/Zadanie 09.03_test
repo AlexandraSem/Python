@@ -6,3 +6,8 @@ import mymodule
 a = 2
 b = 4
 print(mymodule.f(a,b))
+--------------------
+def f1(x,y):  #в папке программы(Lib)
+    res = x*y
+    return res
+-------------------------
