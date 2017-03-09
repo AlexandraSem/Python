@@ -1,0 +1,43 @@
+import random
+koloda = [2,3,4,5,6,7,8,9,10,11] * 4
+print("Игра Блэкджек")
+count = 0
+hunt = int(input("Играем?\n1-да\n2-нет"))
+if hunt == 1:
+    while True:
+        print("Перетасовка колоды...Ожидайте")
+        random.shuffle(koloda)
+        choice = int(input("Брать карту?\n1-да\n2-нет"))
+        if choice == 1:
+            random.choice(koloda)
+            karta = koloda.pop()
+            if karta == 11:
+                print("Вам выпал туз")
+            else:
+                print("Ваша карта", karta)
+                count += karta
+                if count == 21:
+                    print("Вы выиграли")
+                    break
+                elif count > 21:
+                    print("Вы набрали ", count, "очков")
+                    print("Вы проиграли")
+                    break
+                else:
+                    print("Вы набрали ",count,"очков")
+                    print("Продолжаем")
+                    continue
+        else:
+            if count == 21:
+                print("Вы выиграли")
+                break
+            elif count > 21:
+                print("Вы набрали ", count, "очков")
+                print("Вы проиграли")
+                break
+            else:
+                print("Вы набрали ",count,"очков")
+                print("Продолжаем")
+                continue
+if hunt == 2:
+    print("А зачем приходил?")
