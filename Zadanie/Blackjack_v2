@@ -1,17 +1,19 @@
-import random
-print("Игра Блэкджек")
+import random#2+ и более игроков
+print("Блэкджек")
 answer = 1
 budjet = int(input("Ваш бюджет составляет "))
-while answer == 1:
-    koloda = [2,3,4,5,6,7,8,9,10,11] * 4
+while answer == 1: #
+    koloda = [2,3,4,5,6,7,8,9,10,10,10,10,11] * 4 #инициализация колоды
     countPlayer = 0
     countDiler = 0
     kartaPlayer = 0
     kartaDiler = 0
-    stavka = 0
     print("Время делать ставки ")
-    print("Ваш бюджет",budjet)
-    stavka = budjet+1
+    print("Ваш бюджет",budjet) #вывод текущего состояния бюджета
+    while budjet <= 0:
+        print("Необходимо пополнить счет!")
+        budjet = int(input("Введите новый бюджет: "))
+    stavka = budjet + 1
     while stavka > budjet:
         stavka = int(input("Сколько ставите?"))
         if stavka > 0 and stavka <= budjet:
@@ -22,22 +24,21 @@ while answer == 1:
             print("Неверное значение")
 
     while True:
-        print("Перетасовка колоды...")
-        random.shuffle(koloda)
-        choice = int(input("Брать карту?\n1-да\n2-нет"))
+        random.shuffle(koloda) #Перетасовка колоды
+        choice = int(input("Брать карту?\n1-да\n2-нет"))#запрос игроку
+
         if choice == 1:
             print("Карту!")
-            random.choice(koloda)
-            kartaPlayer = koloda.pop()
+            kartaPlayer = koloda.pop() #берем карту
             countPlayer += kartaPlayer
             print("Ваша карта", kartaPlayer)
+
         elif choice == 2:
             print("Хватит!")
-        kartaDiler = koloda.pop()
+        kartaDiler = koloda.pop() #дилер берет карту
         countDiler += kartaDiler
         print("Карта дилера ", kartaDiler)
-        print("Вы набрали ", countPlayer, "очков")
-        print("Дилер набрал ", countDiler, "очков")
+        print("Вы набрали ", countPlayer, "очков"+"\nДилер набрал ", countDiler, "очков")
         if countDiler == 17:
             c = random.randint(0, 1)
             if c == 1:
@@ -46,15 +47,17 @@ while answer == 1:
                 countDiler += kartaDiler
             print("Дилер набрал ", countDiler, "очков")
             break
-        if countPlayer > 21 or countDiler == 21:
-            print("Победа за дилером")
-            print("Ваша ставка ушла в казино")
+        if countPlayer > 21 or countDiler == 21 or countDiler > countPlayer and countDiler >= 17 and countDiler == 21:
+            print("Победа за дилером" + "\nВаша ставка ушла в казино")
             break
-        elif countDiler > 21 or countPlayer == 21:
-            print("Игрок победил")
-            print("Ваш выигрыш составил",stavka*1.5)
+        elif countDiler > 21 or countDiler < countPlayer and countPlayer >= 17 and countPlayer == 21:
+            print("Игрок победил" + "\nВаш выигрыш составил",budjet =+ stavka*1.5)
             break
         elif countDiler == countPlayer:
             print("Ничья")
-            continue
-    answer = int(input("Ещё хочешь острых ощущений? "))
+        elif countDiler > 21 and countPlayer > 21:
+            print("Перебор")
+
+    answer = int(input("Ещё партийку?")) #запрос на повтор партии, при answer = 0 - конец игры
+    if answer == 0:
+        input("Press Enter to continue...")
