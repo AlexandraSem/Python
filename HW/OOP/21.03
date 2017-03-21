@@ -1,0 +1,47 @@
+class Colors :
+    color = "red"
+    def out(self):
+        print(self.color)
+
+obj = Colors()
+obj.out()
+-----------------------------
+class Colors :
+    color1 = "red"
+    color2 = "blue"
+    def out(self):
+        print(self.color1)
+        print(self.color2)
+
+obj1 = Colors()
+obj2 = Colors()
+obj1.out()
+obj2.out()
+----------------------------
+class Second :
+    color = "red"
+    form = "circle"
+    texture = "plain"
+    def changecolor(self,newcolor):
+        self.color = newcolor
+
+    def changeform(self, newform):
+        self.form = newform
+
+    def changetexture(self, newtexture):
+        self.texture = newtexture
+
+
+obj1 = Second()
+obj2 = Second()
+print(obj1.color,obj1.form,obj1.texture)
+print(obj2.color,obj2.form,obj2.texture)
+
+print("\nNew line\n")
+obj2.changecolor("blue")
+obj2.changeform("oval")
+obj2.changetexture("rough")
+print(obj1.color,obj1.form,obj1.texture)
+print(obj2.color,obj2.form,obj2.texture)
+----------------------------
+
