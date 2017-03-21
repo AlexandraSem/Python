@@ -95,3 +95,33 @@ print(crit1)
 
 print("Directly accessing crit1.name:")
 print(crit1.name)
+----------------------------
+class Critter(object):
+    def __init__(self,name):
+        print("A new critter has been born!")
+        self.name = input("Enter name: ")
+
+    def __str__(self):
+        rep = "Critter object with name: " + self.name +"\n"
+        return rep
+
+    def talk(self):
+        print("Hi.I'm ",self.name,"\n")
+
+crit1 = Critter(" ")
+crit1.talk()
+
+crit2 = Critter(" ")
+crit2.talk()
+
+print("Printing crit1:")
+print(crit1)
+
+print("Directly accessing crit1.name:")
+print(crit1.name)
+
+print("Printing crit2:")
+print(crit2)
+
+print("Directly accessing crit2.name:")
+print(crit2.name)
