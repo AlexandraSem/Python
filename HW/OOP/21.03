@@ -44,4 +44,30 @@ obj2.changetexture("rough")
 print(obj1.color,obj1.form,obj1.texture)
 print(obj2.color,obj2.form,obj2.texture)
 ----------------------------
+class Critter(object):
+    def __init__(self):
+        print("A new critter has been born!")
 
+    def talk(self):
+        print("\nHi.I'm an instance of class Critter")
+
+    def out(self):
+        print("Be-be")
+
+crit1 = Critter()
+crit2 = Critter()
+
+crit1.talk()
+crit2.out()
+
+class CritterNew(object):
+
+    def __init__(self):
+        print("Hello")
+
+    def petCry(self):
+        print("You a bad:(")
+
+critNew = CritterNew()
+
+critNew.petCry()
