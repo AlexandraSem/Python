@@ -1,0 +1,53 @@
+# @decorator (staticmethod)
+# public attribute
+# private attribute
+---------------------
+class Critter(object) :
+    def __init__ (self,name,mood):
+        print("A new critter has been born!")
+        self.name = name  # public attribute
+        self.__mood = mood  # private attribute
+    def talk(self):
+        print("\nI'm",self.name)
+        print("Right now I feel",self.__mood,"\n")
+    def __private_method(self):
+        print("This is a private method.")
+    def public_method(self):
+        print("This is a public method.")
+        self.__private_method()
+
+crit = Critter(name = "Poochie",mood = "happy")
+crit.talk()
+crit.public_method()
+
+input("Press Enter to continue...")
+-------------------------------------------
+#Crassy Critter
+#Demonstrates class attributes and static methods
+class Critter(object) :
+    total = 0
+    @staticmethod
+    def status ():
+        print("\n The total number of critter is", Critter.total)
+    def __init__ (self,name):
+        print("A new critter has been born!")
+        self.name = name
+        Critter.total +=1
+
+# main
+print("Accesing the class attribute Critter.total:",end = "")
+print(Critter.total)
+
+print("\nCreating critters")
+crit1 = Critter("critter 1")
+crit2 = Critter("critter 2")
+crit3 = Critter("critter 3")
+
+Critter.status()
+
+print("\n Accesing the class attribute thought an object: ",end = "")
+print(crit1.total)
+
+input("Press Enter to continue...")
+-------------------------------------------
+
