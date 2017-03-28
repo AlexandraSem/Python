@@ -1,17 +1,24 @@
-# Critter Caretaker
-# A virtual pet to care for
+# Напишите программу «Зооферма», в которой будет создано несколько объектов класса Critter, а манипулировать
+#ими всеми можно будет с помощью списка.
+#Теперь пользователь должен заботиться не об одной зверюшке, а обо всех обитателях зоофермы.
+#Выбирая пункт в меню, пользователь выбирает действие, которое хотел бы выполнить со всеми зверюшками:
+#покормить их, поиграть с ними или узнать об их самочувствии.
+#Чтобы программа была интереснее, при создании каждой зверюшки следует назначать ей случайно выбранные уровни голода и уныния.
 
 import random
+
+
 class Critter(object):
     """A virtual pet"""
-    def __init__(self, name, hunger = 0, boredom = 0):
+
+    def __init__(self, name, hunger=random.randint(1,5), boredom=random.randint(1,5)):
         self.name = name
         self.hunger = hunger
         self.boredom = boredom
 
     def __pass_time(self):
-        self.hunger += random.randint(1,5)
-        self.boredom += random.randint(1,5)
+        self.hunger += random.randint(1, 5)
+        self.boredom += random.randint(1, 5)
 
     @property
     def mood(self):
@@ -25,16 +32,16 @@ class Critter(object):
         else:
             m = "mad"
         return m
-    
+
     def talk(self):
-        print(self.hunger," & ",self.boredom)
+        print(self.hunger, " & ", self.boredom)
         print("I'm", self.name, "and I feel", self.mood, "now.\n")
         self.__pass_time()
-    
-    def eat(self, food = random.randint(3,10)):
+
+    def eat(self, food=random.randint(3, 10)):
         t = 0
         n = int(input("How many eat?"))
-        while t != n :
+        while t != n:
             t += 1
             self.hunger -= food
             if self.hunger < 0:
@@ -42,10 +49,10 @@ class Critter(object):
             print("Brruppp.  Thank you.")
         self.__pass_time()
 
-    def play(self, fun = random.randint(3,10)):
+    def play(self, fun=random.randint(3, 10)):
         t = 0
         n = int(input("How many play?"))
-        while t!=n:
+        while t != n:
             t += 1
             print("Wheee!")
             self.boredom -= fun
@@ -53,45 +60,68 @@ class Critter(object):
                 self.boredom = 0
         self.__pass_time()
 
+    def critters(self,crit):
+        choice = None
+        while choice != "0":
+            print ("""
+                            Critter Caretaker
+
+                            0 - Quit
+                            1 - Listen to your critter
+                            2 - Feed your critter
+                            3 - Play with your critter
+                            """)
+
+            choice = input("Choice: ")
+            # exit
+            if choice == "0":
+                print("Good-bye.")
+
+            # listen to your critter
+            elif choice == "1":
+                crit.talk()
+
+            # feed your critter
+            elif choice == "2":
+                crit.eat()
+
+            # play with your critter
+            elif choice == "3":
+                crit.play()
+            else:
+                print("\nSorry, but", choice, "isn't a valid choice.")
 
 def main():
-    crit_name = input("What do you want to name your critter?: ")
-    crit = Critter(crit_name)
+    crit_name1 = input("What do you want to name your critter1?: ")
+    crit1 = Critter(crit_name1)
+    crit_name2 = input("What do you want to name your critter2?: ")
+    crit2 = Critter(crit_name2)
+    crit_name3 = input("What do you want to name your critter3?: ")
+    crit3 = Critter(crit_name3)
+    choice_Critter = None
+    while choice_Critter != "0":
+        print ("""
+                    Choice Critter:
 
-    choice = None  
-    while choice != "0":
-        print \
-        ("""
-        Critter Caretaker
-    
-        0 - Quit
-        1 - Listen to your critter
-        2 - Feed your critter
-        3 - Play with your critter
-        """)
-    
-        choice = input("Choice: ")
-        print()
-
-        # exit
-        if choice == "0":
-            print("Good-bye.")
-
-        # listen to your critter
-        elif choice == "1":
+                    1 - 1st critter
+                    2 - 2nd critter
+                    3 - 3nd critter
+                    """)
+        choice_Critter = input("Choice: ")
+        if choice_Critter == 0:
             crit.talk()
-        
-        # feed your critter
-        elif choice == "2":
-            crit.eat()
-         
-        # play with your critter
-        elif choice == "3":
-            crit.play()
-
-        # some unknown choice
-        else:
-            print("\nSorry, but", choice, "isn't a valid choice.")
-
+            print("Bye-Bye")
+        elif choice_Critter == 1:
+            print("1")
+            crit = crit1
+            crit.talk()
+        elif choice_Critter == 2:
+            crit = crit2
+            crit.talk()
+            crit_name2.critters()
+        elif choice_Critter == 3:
+            crit = crit3
+            crit.talk()
+            crit_name3.critters()
 main()
-("\n\nPress the enter key to exit.") 
+("\n\nPress the enter key to exit.")
