@@ -13,49 +13,64 @@
 
 class Critter(object):
 
-    def __init__(self,name,sost = 0,flash = 0,door = 0):
+    def __init__(self,sost = 0,flash = 0,door = 0):
         self.sost = sost
         self.flash = flash
         self.door = door
 
     def start(self):
 
-        if self.sost == 0 :
-            print("You started the car")
-            self.sost += 1
-
-        elif self.sost == 0 and self.door == 0:
+        if self.sost == 0 and self.door == 0:
             print("Please open door")
 
+        elif self.sost == 0 and self.door != 0:
+            print("You started the car")
+            self.sost += 1
+        elif self.sost >0 and  self.sost!= 1:
+            print("Do not do that")
         else:
             print("The machine is already wound up")
 
     def go(self):
-        if self.sost == 1 :
+        if self.sost == 1 and self.door == 0:
             print("You go")
             self.sost += 1
 
-        elif self.sost == 1 and self.doors == 1:
+        elif self.sost == 1 and self.door != 0:
             print("Please close the doors")
+
+        elif self.sost < 1 and self.sost != 1:
+            print("do not do that")
 
         else:
             print("The machine is already wound up")
 
     def stop(self):
-        if self.sost == 2 or self.stop:
+        if self.sost == 2 :
             print("You stop")
             self.sost -= 1
+
+        elif self.sost <2 and self.sost != 1:
+            print("early")
+
+        elif self.sost == 1:
+            print("Why?")
 
         else:
             print("The machine is already wound up")
 
     def Off(self):
-        if self.sost == 1 or self.sost == 2:
+        if self.sost == 1 :
             print("You stop")
-            self.sost -= 1
+            self.sost = 0
+
+        elif self.sost < 2:
+            print("Do not do that")
 
         else:
             print("The machine is already wound up")
+
+
 
     def flashONOFF(self):
         if self.flash == 0 :
@@ -67,7 +82,7 @@ class Critter(object):
             self.flash -= 1
 
     def doors(self):
-        if self.doors() == 0:
+        if self.door == 0:
             print("You open the door")
             self.door += 1
 
@@ -77,8 +92,7 @@ class Critter(object):
 
 
 def main():
-    name = input("What do you want to name your critter?: ")
-    car = Critter(name)
+    car = Critter()
 
     choice = None
     while choice != 0:
@@ -91,7 +105,7 @@ def main():
             5 - On flash
             6 - open/close doors
         """)
-        choice = int(input("You choose is "))
+        choice = int(input("What are we doing "))
 
         if choice == 1:
             car.start()
@@ -109,4 +123,4 @@ def main():
             print("Incorrect value")
 
 main()
-#("\n\nPress the enter key to exit.")
+input("\n\nPress the enter key to exit.")
