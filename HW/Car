@@ -1,0 +1,112 @@
+#Нужно написать программу "Автомобиль". В программе может быть один или несколько классов, в каждом из которых прописаны необходимые атрибуты и методы.
+# Объект Автомобиль должен иметь необходимый функционал:
+#(Напрмиер)
+#1. Зажигание
+#2. Езда
+#3. Тормоз
+#4. Остановка двигателя
+#5. Включение фар
+#6. Открытие и закрытие дверей
+
+#Функциональность Автомобиля должна соответствовать логике, т.е. например, нельзя завести автомобиль два раза подрят. Нельзя начать езду если нажат тормоз и так далее.
+
+
+class Critter(object):
+
+    def __init__(self,name,sost = 0,flash = 0,door = 0):
+        self.sost = sost
+        self.flash = flash
+        self.door = door
+
+    def start(self):
+
+        if self.sost == 0 :
+            print("You started the car")
+            self.sost += 1
+
+        elif self.sost == 0 and self.door == 0:
+            print("Please open door")
+
+        else:
+            print("The machine is already wound up")
+
+    def go(self):
+        if self.sost == 1 :
+            print("You go")
+            self.sost += 1
+
+        elif self.sost == 1 and self.doors == 1:
+            print("Please close the doors")
+
+        else:
+            print("The machine is already wound up")
+
+    def stop(self):
+        if self.sost == 2 or self.stop:
+            print("You stop")
+            self.sost -= 1
+
+        else:
+            print("The machine is already wound up")
+
+    def Off(self):
+        if self.sost == 1 or self.sost == 2:
+            print("You stop")
+            self.sost -= 1
+
+        else:
+            print("The machine is already wound up")
+
+    def flashONOFF(self):
+        if self.flash == 0 :
+            print("You on flash")
+            self.flash += 1
+
+        else:
+            print("You off flash")
+            self.flash -= 1
+
+    def doors(self):
+        if self.doors() == 0:
+            print("You open the door")
+            self.door += 1
+
+        else:
+            print("You close the door")
+            self.door -= 1
+
+
+def main():
+    name = input("What do you want to name your critter?: ")
+    car = Critter(name)
+
+    choice = None
+    while choice != 0:
+        print("""
+            0 - Exit
+            1 - Start
+            2 - Go
+            3 - Stop
+            4 - Off
+            5 - On flash
+            6 - open/close doors
+        """)
+        choice = int(input("You choose is "))
+
+        if choice == 1:
+            car.start()
+        elif choice == 2:
+            car.go()
+        elif choice == 3:
+            car.stop()
+        elif choice == 4:
+            car.Off()
+        elif choice == 5:
+            car.flashONOFF()
+        elif choice == 6:
+            car.doors()
+        else:
+            print("Incorrect value")
+
+main()
+#("\n\nPress the enter key to exit.")
