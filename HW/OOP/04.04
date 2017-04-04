@@ -1,0 +1,51 @@
+class T1:
+    n = 10
+    def total(self,N):
+        self.total = int(self.n)+int(N)
+
+class T2:
+    def total(self,s):
+        self.total = len(str(s))
+
+class T3:
+    def total(self,N):
+        self.total = int(N)/5
+
+t1 = T1()
+t2 = T2()
+t3 = T3()
+
+#main
+t1.total(45)
+t2.total(45)
+t3.total(45)
+
+print (t1.total)
+print (t2.total)
+print (t3.total)
+---------------------------------------
+class One():
+    def meth1(self,z):
+        print("Line 1 - use other class object")
+        z.meth2()
+
+class Two():
+    def meth2(self):
+        print('Line 2 -"I am method 2 of oblect class Two"')
+
+class Third():
+    def meth3(self,z):
+        print("Hello world")
+        z.meth4()
+class Four():
+    def meth4(self):
+        print("OK")
+
+obj1 = One()
+obj2 = Two()
+obj3 = Third()
+obj4 = Four()
+
+obj1.meth1(obj2)
+obj3.meth3(obj4)
+---------------------------------------
