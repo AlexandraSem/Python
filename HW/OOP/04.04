@@ -151,24 +151,23 @@ obj3.out()
 # Объектами являются: стены, потолки, окна и двери.
 
 class First:
-    def __init__(self,n):
-        self.numb = n
+    def __init__(self,number):
+        self.numb = number
     def out(self):
-        self.numb = (n*n)
+        self.numb = (number*number)
         print(self.numb)
 
 class Second:
-    def __init__(self,n):
-        self.numb = n
+    def __init__(self,number):
+        self.numb = number
     def out(self):
-        self.numb = n*2
+        self.numb = 2*number
         print(self.numb)
 
 
-
-n = int(input("Enter number:"))
-if -100 < n < 100:
-    obj = First()
+number = int(input("Enter number:"))
+if -100 < number < 100:
+    obj = First(number)
 else:
-    obj = Second()
+    obj = Second(number)
 obj.out()
