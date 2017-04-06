@@ -1,0 +1,40 @@
+class Changeable:
+    def __init__(self,color):
+        self.color = color
+    def __call__(self,newcolor):
+        self.color = newcolor
+    def __str__(self):
+        return "%s" % self.color
+
+#main
+canvas = Changeable("green")
+flame = Changeable("blue")
+
+print(canvas,flame)
+
+canvas("yellow")
+flame("pink")
+
+print(canvas, flame)
+-------------------------------
+class Newclass:
+    def __init__(self,base):
+        self.base = base
+    def __add__(self, a):
+        self.base = self.base + a
+    def __mul__(self, b):
+        self.base = self.base * b
+    def __sub__(self, c):
+        self.base = self.base - c
+    def __str__(self):
+        return "%s !!!" % self.base
+
+#main
+obj1 = Newclass(10)
+obj1 + 20
+print(obj1)
+obj1 - 20
+print(obj1)
+obj1 * 20
+print(obj1)
+----------------
