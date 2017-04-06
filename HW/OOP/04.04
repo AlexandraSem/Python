@@ -184,3 +184,25 @@ countWindows = input("Enter count windows")#кол-во окн
 rWindow = int(input("Введите длину окна"))
 result = (2*vKomnati)*(shKomnati + l)
 print(result)
+---------
+/*#2h(w+l)
+class Room:
+    def __init__(self,hR,wR,lR):
+        self.hR = hR
+        self.wR = wR
+        self.lR = lR
+        self.result = (2*hR)*(wR + lR)
+    def out(self):
+        print (self.result)
+hR = int(input("Введите высоту комнаты"))#высота комнаты
+wR = int(input("Введите ширину комнаты"))#ширина комнаты
+lR = int(input("Введите длину комнаты"))#длина комнаты
+
+obj1.out()
+wC = int(input("Введите ширину потолка"))#потолок
+lC = int(input("Введите длину потолка"))#потолок
+
+countDoors = input("Enter count doors")#кол-во дверей
+#doorV = int(input("Введите высоту"))
+#countWindows = input("Enter count windows")#кол-во окн
+#rWindow = int(input("Введите длину окна"))*/
