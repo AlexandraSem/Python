@@ -171,3 +171,16 @@ if -100 < number < 100:
 else:
     obj = Second(number)
 obj.out()
+----------
+#2h(w+l)
+
+vKomnati = int(input("Введите высоту комнаты"))#высота комнаты
+shKomnati = int(input("Введите ширину комнаты"))#ширина комнаты
+vCeiling = int(input("Введите высоту потолка"))#потолок
+shCeiling = int(input("Введите ширину потолка"))#потолок
+countDoors = input("Enter count doors")#кол-во дверей
+doorV = int(input("Введите высоту"))
+countWindows = input("Enter count windows")#кол-во окн
+rWindow = int(input("Введите длину окна"))
+result = (2*vKomnati)*(shKomnati + l)
+print(result)
