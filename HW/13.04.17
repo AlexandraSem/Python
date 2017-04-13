@@ -1,0 +1,49 @@
+from tkinter import *#условие на диске
+
+def bigSize(event):
+    f_1.configure(width = 150,height = 150,bg = "Blue")
+    root.title("Big")
+
+def littleSize(event):
+    f_1.configure(width = 25, height = 25, bg = "Black")
+    root.title("Little")
+
+def initialSize(event):
+    f_1.configure(width = 50, height = 50, bg = "Red")
+    root.title("Initial")
+
+def outgo(event):
+    root.title("Exit")
+    root.destroy()
+
+def move(event):
+    root.title("Move mouse")
+
+
+root = Tk()
+root.title("This is Magic!")
+root.geometry("100x100")
+
+f_1=Frame(root,width = 50,height = 50,bg = "Yellow")
+
+root.minsize(width = 250, height = 250)
+root.maxsize(width = 500, height = 500)
+
+but1 = Button(root,text = "BIG", width = 10)
+but2 = Button(root,text = "LITTLE",width = 10)
+but3 = Button(root,text = "INITIAL",width = 10)
+out = Button(root,text = "Exit",width = 10)
+
+but1.bind("<Button-1>",bigSize)
+but2.bind("<Button-1>",littleSize)
+but3.bind("<Button-1>",initialSize)
+out.bind("<Button-1>",outgo)
+root.bind('<Motion>', move)
+
+f_1.pack(side=TOP)
+but1.pack()
+but2.pack()
+but3.pack()
+out.pack()
+
+root.mainloop()
