@@ -1,0 +1,97 @@
+#calculator                  [no work]
+import math
+#def equal(event):
+
+#def OnePlusTwo(event,a):
+    #c = a+b
+ #   tex.insert(c)
+#def OneMinusTwo(event):
+#def equal(event):
+class One():
+    def __init__(self):
+        self.a = a
+    def click(self):
+        if One == 1:
+            tex.insert(1)
+    One.bind("<Button-1>", click)
+#def oneAdd(event):
+        # tex.insert('1')
+#def twoAdd(event):
+#tex.insert('2')
+#def threeAdd(event):
+# tex.insert('3')
+#def fourAdd(event):
+# tex.insert('4')
+#def fiveAdd(event):
+   # tex.insert('5')
+#def sixAdd(event):
+   # tex.insert('6')
+#def sevenAdd(event):
+   # tex.insert('7')
+#def eightAdd(event):
+    #tex.insert('8')
+#def nineAdd(event):
+    #tex.insert('9')
+#def zeroAdd(event):
+    #tex.insert('0')
+#def equal(event):
+   # tex.insert("=")
+def cleanAll(event):
+    tex.delete(1.0, END)
+
+from tkinter import *
+root = Tk()
+root.title("Calculator")
+tex = Entry(root, width=20, bd=3)
+#ent.pack()
+a = 0
+tex.grid(row=0,column=2)
+
+One = Button(root,text = "1")
+Two = Button(root,text = "2")
+Three = Button(root,text = "3")
+Four = Button(root,text = "4")
+Five = Button(root,text = "5")
+Six = Button(root,text = "6")
+Seven = Button(root,text = "7")
+Eight = Button(root,text = "8")
+Nine = Button(root,text = "9")
+Zero = Button(root,text = "0")
+eq = Button(root,text = "=")
+plus = Button(root,text = "+")
+minus = Button(root,text = "-")
+clear = Button(root,text ="Clear")
+pt = Button(root,text = ".")
+
+One.bind("<Button-1>",click)
+Two.bind("<Button-1>",click)
+Three.bind("<Button-1>",click)
+Four.bind("<Button-1>",click)
+Five.bind("<Button-1>",click)
+Six.bind("<Button-1>",click)
+Seven.bind("<Button-1>",click)
+Eight.bind("<Button-1>",click)
+Nine.bind("<Button-1>",click)
+Zero.bind("<Button-1>",click)
+eq.bind("<Button-1>",click)
+plus.bind("<Button-1>",click)
+minus.bind("<Button-1>",click)
+clear.bind("<Button-1>",cleanAll)
+
+
+#main
+Seven.grid(row = 1,column = 0)
+Eight.grid(row =1,column = 1)
+Nine.grid(row = 1,column = 2)
+Four.grid(row = 2,column = 0)
+Five.grid(row = 2,column = 1)
+Six.grid(row = 2,column = 2)
+One.grid(row = 3,column = 0)
+Two.grid(row = 3,column = 1)
+Three.grid(row = 3,column = 2)
+Zero.grid(row=4,column=1)
+clear.grid(row = 4,column = 3)
+tex.grid(row = 0,column = 3)
+pt.grid(row = 4,column = 2)
+eq.grid(row = 4,column = 0)
+root.mainloop()
