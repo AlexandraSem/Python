@@ -36,7 +36,8 @@ def bet(budjet,event):#ставка
     else:
         tex.delete(1.0, END)
         tex.insert(END, "Incorrect value")
-def clear(event):
+
+def clear():
     budjet = s.get()
     tex.delete(1.0, END)
 
@@ -50,6 +51,7 @@ def get_budjet(event):# бюджет
         tex.insert(END, "The budjet is done.")
 
 root = Tk()
+#root.title(text = "Blackjack")
 random.shuffle(koloda)  # Перетасовка колоды
 firstOpenKDiler = koloda.pop() # раздача карт дилеру
 secondCloseKDiler = koloda.pop()
@@ -64,7 +66,7 @@ ent = Entry(root, width=1)
 s = Entry(root, width=2)
 but = Button(root, text="okk",command = bet)
 budjet1 = Button(root, text="ok")
-tex = Text(root, width=20, height=3, font="12", wrap=WORD)
+tex = Text(root, width=15, height=3, font="12", wrap=WORD)
 karty = Button(root,text = "Give karty",command = give_karty)
 nomore = Button(root,text = "Do not take",command = no_more_kart)
 ent = Entry(root, width=26, bd=3)
@@ -77,7 +79,7 @@ karty.grid(row = 3,column = 4)
 ent.grid(row=0, column=0, padx=20)
 but.grid(row=1, column=1)
 tex.grid(row=0, column=2, padx=20, pady=10)
-s.grid(row=0,column = 2)
+s.grid(row=3,column = 2)
 c.grid(row = 1,column = 2)
 budjet1.bind("<Button-1>", get_budjet)
 
