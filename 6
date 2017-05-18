@@ -1,0 +1,101 @@
+import random
+from tkinter import *
+
+koloda = [2,3,4,5,6,7,8,9,10,10,10,10,11] * 2#инициализация колоды
+
+answer = 1
+budjet = 10
+stavka = 2
+countDiler = 0
+countPlayer = 0
+
+
+class Carts():
+    def __init__(self):
+        self.budjet = budjet
+        self.countPlayer = countPlayer
+        self.countDiler = countDiler
+        self.tex = Text(root, width=25, height=15, bd=0)
+
+        random.shuffle(koloda)
+        self.price = stavka * 1.5
+        self.price_blackjack = stavka * 2
+
+        self.but_Give = Button(text="Взять карту")
+        self.but_Give.bind("<Button - 1>", self.give)
+        self.but_dont_touch = Button(text="Отказаться", command=self.deal)
+        self.but_Give.grid(row=0, column=0)
+        self.but_dont_touch.grid(row=0, column=3)
+        self.tex.grid()
+
+
+    def give(self,event):
+        Karta = koloda.pop() #берем карту
+        self.countPlayer += Karta
+        print("Your card ", Karta)
+        return self.countPlayer
+
+
+    def deal(event,self):
+        while self.countDiler != 17 and self.countDiler <= 21 or self.countPlayer < 21 and self.countPlayer != 21:
+            if self.countDiler >= 17 or countPlayer >= 21:
+                return self.countDiler
+
+            kartaDiler = koloda.pop()  # Ход дилера
+            self.countDiler += kartaDiler
+            print("Diler card ", kartaDiler)
+            return self.countDiler
+
+    firstOpenKDiler = koloda.pop()  # раздача карт дилеру
+    secondCloseKDiler = koloda.pop()
+    countDiler = firstOpenKDiler + secondCloseKDiler
+    #tex.insert(END, "Dealer card", firstOpenKDiler)
+
+    firstKarta = koloda.pop()  # ход игрока
+    secondKarta = koloda.pop()
+    countPlayer = firstKarta + secondKarta
+    #tex.insert(END, "Your points ", countPlayer)
+
+    # print("Your budget",self.budjet) #вывод текущего состояния бюджета
+
+    print("\nThe dealer dialed ", countDiler, "points")
+    print("Your points", countPlayer)
+
+    if countDiler > 21 and countPlayer > 21:
+        print("Bust")
+
+
+    elif countPlayer > 21 or countDiler == 21 or countDiler > countPlayer and countDiler >= 17 and countDiler == 21:
+        print("Winning the Dealer" + "\nThe bet went to the casino")
+
+    elif countDiler > 21 or countDiler < countPlayer and countPlayer >= 17 and countPlayer != 21:
+        print("Player wins" + "\nYour winnings were ", price)
+        # self.budjet += price
+
+    elif countPlayer == 21:
+        djackpot_chance = random.randint(1, 10)
+        print("Change 1 to ", djackpot_chance)
+        if djackpot_chance == 6:
+            print("JACKPOT")
+            djackpot = price * 5
+            # budjet += djackpot
+        print("BlackJack!!!" + "\nYour winnings were ", price_blackjack)
+        # budjet += price_blackjack
+
+
+    elif countDiler == countPlayer:
+        print("Draw")
+        # continue
+    answer = int(input("Another batch?\n0-exit\n1-continue"))  # запрос на повтор партии, при answer = 0 - конец игры
+    if answer == 0:
+        input("Press Enter to continue...")
+        # app.root.mainloop()
+
+dt =  Carts()
+root = Tk()
+root.title('Blackjack')
+root.geometry('800x600')
+
+root.mainloop()
+
+
