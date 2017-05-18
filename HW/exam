@@ -1,0 +1,114 @@
+import random
+
+koloda = [2,3,4,5,6,7,8,9,10,10,10,10,11] * 2
+print("\t\t\t\tBlackjack")
+answer = 1
+budjet = int(input("Your budget is "))
+
+while answer == 1:
+    countPlayer = 0
+    countDiler = 0
+    choice = 1
+
+    print("\nTime to bet! Your budget ",budjet) #вывод текущего состояния бюджета
+    while budjet <= 0:
+        print("You need to replenish your account!\n")
+        budjet = int(input("Enter a new budget: "))
+    stavka = budjet+1
+    while stavka > budjet:
+        stavka = int(input("How much do you bet? "))
+        if stavka > 0 and stavka <= budjet:
+            budjet -= stavka
+            print("The bet is done. There is no more bet")
+            break
+        else:
+            print("Incorrect value\n")
+
+    price = stavka * 1.5
+    price_blackjack = stavka * 2
+    random.shuffle(koloda)
+
+    firstOpenKDiler = koloda.pop() # раздача карт дилеру
+    secondCloseKDiler = koloda.pop()
+    countDiler = firstOpenKDiler + secondCloseKDiler
+    print("\nDealer card:", firstOpenKDiler)
+
+    if firstOpenKDiler == 10 or firstOpenKDiler == 11: #проверка дилера на блекджека в начале игры
+        vskritie = firstOpenKDiler + secondCloseKDiler
+        strahovka = int(input("Buy insurance? Cost 2$: 1 - yes \n2 - no\nAnswer: "))#страховка от блекджека дилера
+        if strahovka == 1:
+            print("You buy strahovka\n")
+            budjet-=2
+
+        else:
+            print("You say no\n")
+
+        if vskritie == 21:
+            print("BLACKJACK!\n")
+            if strahovka == 1:
+                print("You give you stavka\n")
+                budjet += stavka
+                break
+
+            else:
+                print("The bet went to the casino\n")
+                print("Your budjet: \n",budjet)
+                break
+
+        else:
+            print("NO BlackJack\n")
+
+    firstKarta = koloda.pop()  # получение карт игрока
+    secondKarta = koloda.pop()
+    countPlayer = firstKarta + secondKarta
+    print("\nFirst card", firstKarta)
+    print("Second card ", secondKarta)
+    print("Your points ", countPlayer)
+
+    while countPlayer != 21 or choice == 2 and vskritie != 21:
+        choice = int(input("\nGive card?\n1 - yes 2 - no \nAnswer: "))
+        if choice == 1:
+            Karta = koloda.pop() #берем карту
+            countPlayer += Karta
+            print("\nYour card ", Karta)
+        else:
+            print("Incorrect value\n")
+        print("Your points ", countPlayer)
+        if choice == 2 or countPlayer > 21:
+            break
+
+    while countDiler != 17 and countDiler <= 21 or countPlayer < 21 and countPlayer != 21:#Дилер берет карты
+        if countDiler >= 17 or countPlayer >= 21:
+            break
+
+        kartaDiler = koloda.pop()
+        countDiler += kartaDiler
+        print("Diler card :", kartaDiler)
+
+    print("\nThe dealer dialed ", countDiler, "points")
+    print("Your points :", countPlayer)
+
+    if countDiler > 21 and countPlayer > 21:
+        print("Bust\n")
+        continue
+
+    elif countPlayer > 21 or countDiler == 21 or countDiler > countPlayer and countDiler >= 17 and countDiler == 21:
+        print("\nWinning the Dealer" + "\nThe bet went to the casino\n")
+
+    elif countDiler > 21 or countDiler < countPlayer and countPlayer >= 17 and countPlayer != 21:
+        print("\nPlayer wins" + "\nYour winnings were ",price )
+        budjet += price
+
+    elif countPlayer == 21:
+        print("\nBlackJack!!!" + "\nYour winnings were ", price_blackjack)
+        budjet += price_blackjack
+
+    elif countDiler == countPlayer:
+        print("Draw\n")
+        continue
+
+    print("Your budget ",budjet)
+
+    answer = int(input("\n\nAnother batch?\n0-exit\n1-continue\nYou answer: ")) #при answer = 0 - конец игры
+    if answer == 0:
+        input("Press Enter to continue...\n")
